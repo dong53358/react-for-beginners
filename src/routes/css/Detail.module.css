@@ -10,11 +10,13 @@
 
 .LoadingMain {
   display: flex;
+  height: 100%;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
 
-.LoadingMain h1 {
+.Loading {
   font-size: 40px;
   font-weight: 600;
 }

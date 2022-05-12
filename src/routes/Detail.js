@@ -26,7 +26,9 @@ function Detail() {
       </div>
       {loading ? (
         <div className={styles.LoadingMain}>
-          <h1>"Loading..."</h1>
+          <div>
+            <h1 className={styles.Loading}>"Loading..."</h1>
+          </div>
         </div>
       ) : (
         <div className={styles.main}>
