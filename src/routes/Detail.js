@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from "./css/Detail.module.css";
 
 function Detail() {
@@ -18,27 +18,37 @@ function Detail() {
   }, []);
   return (
     <div className={styles.body}>
+      <div className={styles.nav}>
+        <span>QFLIX</span>
+        <span>
+          <Link to={`/`}>home</Link>
+        </span>
+      </div>
       {loading ? (
-        "Loading..."
+        <div className={styles.LoadingMain}>
+          <h1>"Loading..."</h1>
+        </div>
       ) : (
         <div className={styles.main}>
-          <div className={styles.imgAndTitle}>
-            <span className={styles.img}>
-              <img src={details.medium_cover_image} />
-            </span>
-            <span className={styles.title}>{details.title}</span>
-          </div>
-          <div className={styles.info}>
-            <span>{details.year}</span>
-            <span>{details.rating}★</span>
-            <span>{details.runtime}분</span>
-            <span>
-              {details.genres &&
-                details.genres.map((g) => <li key={g}>{g}</li>)}
-            </span>
-          </div>
-          <div className={styles.summary}>
-            <span>{details.description_intro}</span>
+          <div className={styles.main2}>
+            <div className={styles.imgAndTitle}>
+              <span className={styles.img}>
+                <img src={details.medium_cover_image} />
+              </span>
+              <span className={styles.title}>{details.title}</span>
+            </div>
+            <div className={styles.info}>
+              <span>{details.year}</span>
+              <span>{details.rating}★</span>
+              <span>{details.runtime}분</span>
+              <span>
+                {details.genres &&
+                  details.genres.map((g) => <li key={g}>{g}</li>)}
+              </span>
+            </div>
+            <div className={styles.summary}>
+              <span>{details.description_intro}</span>
+            </div>
           </div>
         </div>
       )}

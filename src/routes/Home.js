@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Movie from "../components/Movie";
 import styles from "./css/Home.module.css";
 
@@ -19,21 +20,31 @@ function Home() {
   }, []);
   console.log(movies);
   return (
-    <div className={styles.main}>
+    <div className={styles.body}>
+      <div className={styles.nav}>
+        <span>QFLIX</span>
+        <span>
+          <Link to={`/`}>home</Link>
+        </span>
+      </div>
       {loading ? (
-        <h1>Loading...</h1>
+        <div className={styles.LoadingMain}>
+          <h1>"Loading..."</h1>
+        </div>
       ) : (
-        <div>
-          {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              coverImg={movie.medium_cover_image}
-              title={movie.title}
-              summary={movie.summary}
-              genres={movie.genres}
-            />
-          ))}
+        <div className={styles.main}>
+          <div className={styles.main2}>
+            {movies.map((movie) => (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                coverImg={movie.medium_cover_image}
+                title={movie.title}
+                summary={movie.summary}
+                genres={movie.genres}
+              />
+            ))}
+          </div>
         </div>
       )}
     </div>
